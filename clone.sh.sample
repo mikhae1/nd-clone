@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#
+# Full clone example
+# This task is for crontab
+
+set -eo pipefail
+
+CWD="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+${CWD}/bin/clone_db_from_dump.sh
+
+${CWD}/bin/clone_db_from_dump.sh -c $CWD/config/prod.conf
+${CWD}/bin/clone_db_from_dump.sh -c $CWD/config/dev.conf
+
+${CWD}/bin/sync_dirs
