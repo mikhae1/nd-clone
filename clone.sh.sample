@@ -1,15 +1,14 @@
 #!/usr/bin/env bash
 #
 # Full clone example
-# This task is for crontab
+# This is main aggregate task for crontab
 
 set -eo pipefail
 
 CWD="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-${CWD}/bin/clone_db_from_dump.sh
-
-${CWD}/bin/clone_db_from_dump.sh -c $CWD/config/prod.conf
-${CWD}/bin/clone_db_from_dump.sh -c $CWD/config/dev.conf
-
-${CWD}/bin/sync_dirs
+${CWD}/clone_db_from_dump/clone_db_from_dump.sh # & to run it in parallel
+${CWD}/clone_db/clone_db.sh -c ${CWD}/clone_db/flex.conf
+/usr/local/bin/sphinx_reindex || true # the task may fail
+${CWD}/clone_db/clone_db.sh -c ${CWD}/clone_db/calc.conf
+${CWD}/sync_dirs/sync_dirs.sh

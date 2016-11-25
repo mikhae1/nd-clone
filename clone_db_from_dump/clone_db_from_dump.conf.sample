@@ -18,7 +18,7 @@ DST_DB_USER=flow
 DST_DB_PWD='superpass'
 
 # if FLUSH_DB is set db will be recreated
-FLUSH_DB=true
+#FLUSH_DB=true
 
 # all data will be piped through FILTER if FILTER is set
 #FILTER="sed 's/\/\*[^*]*DEFINER=[^*]*\*\///g'"

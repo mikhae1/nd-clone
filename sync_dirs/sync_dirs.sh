@@ -29,7 +29,7 @@ clone() {
   local src="$1"
   local dst="$2"
 
-  local reset_cmd="sudo chmod -R g+w '${dst}' && sudo chown -R '${DST_USER}:' '${dst}'"
+  local reset_cmd="sudo chmod -R g+w '${dst}' && sudo chown -R '${DST_USER}:${DST_USER}' '${dst}'"
   local clone_cmd
   case "${CLONE_TYPE}" in
     "rsync")
