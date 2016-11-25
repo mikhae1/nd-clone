@@ -31,7 +31,7 @@ load_config() {
 
   [[ "${VERBOSE}" == true ]] && log "Loading config from: ${CONFIG_PATH}"
   source "${CONFIG_PATH}"
-  log "Config loaded!"
+  log "config loaded!"
 
   if [[ "${VERBOSE}" == true ]]; then
     log "Environment and variables:"
