@@ -17,7 +17,7 @@ DST_PWD='secret2'
 #BACKUP_DIR=/opt/nd-clone/backup
 
 # all data will be piped through FILTER if FILTER is set
-FILTER="sed s/\/\*[^*]*DEFINER=[^*]*\*\///g"
+FILTER="sed 's/\/\*[^*]*DEFINER=[^*]*\*\///g'"
 
 # if FLUSH_DB is set db will be recreated
 FLUSH_DB=true

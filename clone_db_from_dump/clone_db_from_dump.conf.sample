@@ -21,4 +21,4 @@ DST_DB_PWD='superpass'
 FLUSH_DB=true
 
 # all data will be piped through FILTER if FILTER is set
-#FILTER="sed s/\/\*[^*]*DEFINER=[^*]*\*\///g"
+#FILTER="sed 's/\/\*[^*]*DEFINER=[^*]*\*\///g'"
