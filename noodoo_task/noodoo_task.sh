@@ -11,8 +11,6 @@ source "${CWD}/../lib/lib.sh"
 
 load_config "$@"
 
-log::ok "$0 starting"
-
 log "running ${CMD}..."
 
 (cd "${ND_PATH}"; NODE_ENV="${ND_ENV}" ${CMD})

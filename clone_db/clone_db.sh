@@ -14,7 +14,6 @@ src_login="-h${SRC_HOST} -u${SRC_USER} -p${SRC_PWD}"
 dst_login="-h${DST_HOST} -u${DST_USER} -p${DST_PWD}"
 
 main() {
-  log::ok "$0 starting"
   if [[ ! -z "${BACKUP_DIR// }" ]]; then
     mkdir -v -p "${BACKUP_DIR}"
 

@@ -18,6 +18,7 @@ fi
 # Arguments:
 #   Call it with "$@" parameter from parent script
 load_config() {
+  log "starting $0.."
   parse_opts "$@"
 
   # check required params
