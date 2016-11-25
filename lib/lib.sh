@@ -24,12 +24,13 @@ load_config() {
   if [[ -z "${CONFIG_PATH// }" ]]; then
     log::warn "No config file is set"
     CONFIG_PATH="${CWD}/$(basename $0 .sh).conf"
-    log "Looking for default config at: ${CONFIG_PATH}"
+    log "Searching for default config at: ${CONFIG_PATH}"
     [ ! -f "${CONFIG_PATH}" ] && exception "Config file not found!"
   fi
 
   [[ "${VERBOSE}" == true ]] && log "Loading config from: ${CONFIG_PATH}"
   source "${CONFIG_PATH}"
+  log "Config loaded!"
 
   if [[ "${VERBOSE}" == true ]]; then
     log "Environment and variables:"
