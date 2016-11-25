@@ -4,7 +4,7 @@ SRC_DIR=/backup
 DUMP_FILE=flow_production_latest.sql.gz
 
 # user at the destination host for scp command
-SCP_USER=so
+SSH_USER=so
 # ssh key to login to SRC_HOST
 SSH_KEY=/home/nd_tasks/.ssh/id_rsa
 

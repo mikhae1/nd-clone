@@ -13,7 +13,7 @@ load_config "$@"
 login="-h${DST_DB_HOST} -u${DST_DB_USER} -p${DST_DB_PWD}"
 
 mkdir -v -p ${DST_DIR}
-scp -i "${SSH_KEY}" "${SCP_USER}@${SRC_HOST}:${SRC_DIR}/${DUMP_FILE}" "${DST_DIR}" ||
+scp -i "${SSH_KEY}" "${SSH_USER}@${SRC_HOST}:${SRC_DIR}/${DUMP_FILE}" "${DST_DIR}" ||
   exception "Can't download file: ${SRC_HOST}:${SRC_DIR}/${DUMP_FILE}"
 
 log::info "${DUMP_FILE} was downloaded to ${DST_DIR}"
