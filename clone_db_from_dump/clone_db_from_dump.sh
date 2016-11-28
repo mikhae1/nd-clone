@@ -28,7 +28,7 @@ if [[ "${FLUSH_DB}" == true ]]; then
   mysql ${login} -v -e "DROP DATABASE IF EXISTS ${DST_DB_NAME}" || true
 fi
 
-log "creating new database (if any)..."
+log "creating new database (if not any)..."
 mysql ${login} -v -e "CREATE DATABASE IF NOT EXISTS ${DST_DB_NAME}"  || true
 
 log "loading ${DUMP_FILE} into database..."

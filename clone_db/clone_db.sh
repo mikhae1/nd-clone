@@ -29,7 +29,7 @@ main() {
     mysql ${dst_login} -v -e "DROP DATABASE IF EXISTS ${DST_DB}" || true
   fi
 
-  log "creating new database (if any)..."
+  log "creating new database (if not any)..."
   mysql ${dst_login} -v -e "CREATE DATABASE IF NOT EXISTS ${DST_DB}"
 
   log "database cloning..."
