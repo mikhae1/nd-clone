@@ -3,16 +3,19 @@
 # Full clone example
 # This is main aggregate task for crontab
 
-#set -eo pipefail
+# set -eo pipefail
+# allow any task to fail except first one
 
 CWD="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 source "${CWD}/lib/lib.sh"
 
 ${CWD}/clone_db_from_dump/clone_db_from_dump.sh || exit 1 # & to run it in parallel
-${CWD}/noodoo_task/noodoo_task.sh
+${CWD}/noodoo_task/noodoo_task.sh -c ${CWD}/noodoo_task/migrate_flow.conf
 ${CWD}/clone_db/clone_db.sh -c ${CWD}/clone_db/calc.conf
 ${CWD}/clone_db/clone_db.sh -c ${CWD}/clone_db/flex.conf
+${CWD}/noodoo_task/noodoo_task.sh -c ${CWD}/noodoo_task/migrate_flexible.conf
 /usr/local/bin/sphinx_reindex
 ${CWD}/sync_dirs/sync_dirs.sh
 log::ok 'All clone operations are done!'
+

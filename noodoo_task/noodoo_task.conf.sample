@@ -1,3 +1,6 @@
 ND_PATH=/var/www/noodoo/app
 ND_ENV=production
 CMD='node tasks deals/migrate -k'
+
+# run this job with || true
+#CMD='node tasks deals/migrate_flexible'
