@@ -25,7 +25,7 @@ main() {
       save_dump
     fi
     
-    log::ok "backup finished"
+    log::info "backup finished"
   fi
 
   if [[ "${FLUSH_DB}" == true ]]; then
@@ -74,9 +74,9 @@ save_dump() {
 
   local backup_fpath="${BACKUP_DIR}/${DST_DB}_${table}.sql.gz"
   log "backuping ${DST_HOST}/${DST_DB}/${table:-*}..."
-  mysqldump -v -f ${dst_login} "${DST_DB}" ${table} | gzip > "${backup_fpath}" || true
+  mysqldump -v -f ${dst_login} "${DST_DB}" ${table} | gzip > "${backup_fpath}"
   log "${DST_HOST}/${DST_DB}/${table:-*} is saved at: ${backup_fpath}"
-  log "BACKUP_DIR size is: $(du -h "${BACKUP_DIR}")"
+  log "${BACKUP_DIR} size is: $(du -h "${BACKUP_DIR}")"
 }
 
 main "$@"
