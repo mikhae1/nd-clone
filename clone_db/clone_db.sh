@@ -64,6 +64,7 @@ pipe_clone() {
   [[ "${VERBOSE}" == true ]] && log "${cmd}"
 
   eval "${cmd}"
+
   log::info "${SRC_HOST}/${SRC_DB}/${table:-*} is cloned to \
     mysql://${DST_HOST}/${DST_DB}/${table:-*}"
 }
@@ -74,7 +75,13 @@ save_dump() {
 
   local backup_fpath="${BACKUP_DIR}/${DST_DB}_${table}.sql.gz"
   log "backuping ${DST_HOST}/${DST_DB}/${table:-*}..."
-  mysqldump -v -f ${dst_login} "${DST_DB}" ${table} | gzip > "${backup_fpath}"
+
+  local cmd="mysqldump -v -f ${dst_login} ${DST_DB} ${table} | gzip > ${backup_fpath}"
+
+  [[ "${VERBOSE}" == true ]] && log "${cmd}"
+
+  eval "${cmd}"
+
   log "${DST_HOST}/${DST_DB}/${table:-*} is saved at: ${backup_fpath}"
   log "${BACKUP_DIR} size is: $(du -h "${BACKUP_DIR}")"
 }
