@@ -11,8 +11,10 @@ source "${CWD}/../lib/lib.sh"
 
 load_config "$@"
 
-log "running ${CMD}..."
+run="NODE_ENV=${ND_ENV} ${CMD}"
 
-(cd "${ND_PATH}"; NODE_ENV="${ND_ENV}" ${CMD})
+log "running ${run}..."
+
+cd "${ND_PATH}" && eval "${run}"
 
 log::ok "$0 finished!"

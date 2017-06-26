@@ -11,7 +11,7 @@ source "${CWD}/../lib/lib.sh"
 load_config "$@"
 
 main() {
- log::ok "$0 starting"
+  log::ok "$0 starting"
 
   local i src dst
   for i in {1..20}; do
