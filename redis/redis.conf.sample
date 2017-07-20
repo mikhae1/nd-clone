@@ -1,0 +1,12 @@
+# REDIS_SERVERS is array for cluster and standalone server
+REDIS_SERVERS=(
+  'uds-redis-test-clu01'
+  'uds-redis-test-clu02'
+  'uds-redis-test-clu03'
+)
+
+# the following database will be used
+REDIS_DB=11
+
+# following command will be run
+REDIS_CMD=INFO #FLUSHDB
