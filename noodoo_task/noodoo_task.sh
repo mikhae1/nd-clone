@@ -13,7 +13,7 @@ load_config "$@"
 
 run="NODE_ENV=${ND_ENV} ${CMD}"
 
-log "running ${run}..."
+log::info "running ${run}..."
 
 cd "${ND_PATH}" && eval "${run}"
 

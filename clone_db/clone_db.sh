@@ -16,15 +16,15 @@ dst_login="-h${DST_HOST} -u${DST_USER} -p${DST_PWD}"
 main() {
   if [[ ! -z "${BACKUP_DIR// }" ]]; then
     log::info "starting backup of current database: ${DST_HOST}/${DST_DB}/${table:-*}"
-    
+
     mkdir -v -p "${BACKUP_DIR}"
-    
+
     if [ ! -z ${SRC_TABLES+test} ]; then
       for table in "${SRC_TABLES[@]}"; do save_dump "${table}"; done
     else
       save_dump
     fi
-    
+
     log::info "backup finished"
   fi
 
