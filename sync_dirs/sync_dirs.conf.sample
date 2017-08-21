@@ -12,6 +12,7 @@ DST_USER=noodoo
 # CLONE_TYPE=scp
 # to use rsync to copy dirs:
 # CLONE_TYPE=rsync
+# RSYNC_OPTS='-avP'
 # NB: we can't use rsync to copy from nfs to xfs without permission set errors
 CLONE_TYPE=scp
 

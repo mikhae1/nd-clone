@@ -29,11 +29,19 @@ clone() {
   local src="$1"
   local dst="$2"
 
-  local reset_cmd="sudo chmod -R g+w '${dst}' && sudo chown -R '${DST_USER}:${DST_USER}' '${dst}'"
+  local ssh_key=""
+  [ ! -z "${SSH_KEY}" ] && ssh_key="-i ${SSH_KEY}"
+
+  local rsync_opts='-avP'
+  [ ! -z "${RSYNC_OPTS}" ] && rsync_opts="${RSYNC_OPTS}"
+
+  local reset_cmd="echo 'DST_USER not set, skipping dir reset'"
+  [ ! -z "${DST_USER}" ] && reset_cmd="sudo chmod -R g+w '${dst}' && sudo chown -R '${DST_USER}:${DST_USER}' '${dst}'"
+
   local clone_cmd
   case "${CLONE_TYPE}" in
     "rsync")
-      clone_cmd="rsync -chavz -O -e 'ssh -i ${SSH_KEY}' '${SRC_USER}@${SRC_HOST}':'${src}' '${dst}'"
+      clone_cmd="rsync ${rsync_opts} -O -e 'ssh ${ssh_key}' '${SRC_USER}@${SRC_HOST}':'${src}' '${dst}'"
     ;;
     "scp")
       clone_cmd="scp -r -i '${SSH_KEY}' '${SRC_USER}@${SRC_HOST}':'${src}' '${dst}'"
@@ -44,11 +52,11 @@ clone() {
   esac
 
   log "cloning ${SRC_HOST}:${src} to ${dst}"
-  [[ "${VERBOSE}" == true ]] && log "${reset_cmd}"
+  [ ! -z "${VERBOSE}" ] && log "${reset_cmd}"
   eval "${reset_cmd}"
-  [[ "${VERBOSE}" == true ]] && log "${clone_cmd}"
+  [ ! -z "${VERBOSE}" ] && log "${clone_cmd}"
   eval "${clone_cmd}"
-  [[ "${VERBOSE}" == true ]] && log "${reset_cmd}"
+  [ ! -z "${VERBOSE}" ] && log "${reset_cmd}"
   eval "${reset_cmd}"
 
   log::info "${SRC_HOST}:${src} is downloaded"
