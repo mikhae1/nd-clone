@@ -51,6 +51,8 @@ clone() {
     ;;
   esac
 
+  [ ! -z "${TIMEOUT}" ] && clone_cmd="timeout ${TIMEOUT} ${clone_cmd}"
+
   log "cloning ${SRC_HOST}:${src} to ${dst}"
   [ ! -z "${VERBOSE}" ] && log "${reset_cmd}"
   eval "${reset_cmd}"

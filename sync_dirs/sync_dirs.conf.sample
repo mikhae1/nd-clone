@@ -16,6 +16,9 @@ DST_USER=noodoo
 # NB: we can't use rsync to copy from nfs to xfs without permission set errors
 CLONE_TYPE=scp
 
+# process will be killed after TIMEOUT if TIMEOUT is set
+# TIMEOUT=3600  # in seconds
+
 # List of directories to clone if format:
 # SRC_DIR[n]=/some/source/dir
 # DST_DIR[n]=/some/dst/dir
