@@ -2,8 +2,6 @@
 #
 # Run any command on redis master server on specified DB
 
-set -o pipefail
-
 CWD="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 source "${CWD}/../lib/lib.sh"
