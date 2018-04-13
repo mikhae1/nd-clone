@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 #
-# Copy remote directory using scp
-
-set -eo pipefail
+# Sync remote directories
 
 CWD="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -32,7 +30,7 @@ clone() {
   local ssh_key=""
   [ ! -z "${SSH_KEY}" ] && ssh_key="-i ${SSH_KEY}"
 
-  local rsync_opts='-avP'
+  local rsync_opts='-rlOhv'
   [ ! -z "${RSYNC_OPTS}" ] && rsync_opts="${RSYNC_OPTS}"
 
   local reset_cmd="echo 'DST_USER not set, skipping dir reset'"
