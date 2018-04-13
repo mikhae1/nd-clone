@@ -13,7 +13,6 @@ main() {
 
   local i src dst
   for i in {1..20}; do
-    # bash it, baby!
     eval src="\$SRC_DIR$i"
     eval dst="\$DST_DIR$i"
 
