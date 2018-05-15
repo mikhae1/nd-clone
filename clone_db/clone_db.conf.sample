@@ -15,7 +15,7 @@ DST_PWD="'secret2'"
 
 # backup of DST_DB with will be created if BACKUP_DIR is set
 # if SRC_TABLES is set only SRC_TABLES will be backuped
-# don't use this option with FLUSH_DB=true or with an empty DST_DB 
+# don't use this option with FLUSH_DB=true or with an empty DST_DB
 # (or if you don't have SRC_TABLES in DST_DB)
 #BACKUP_DIR=/opt/nd-clone/backup
 
@@ -24,3 +24,6 @@ DST_PWD="'secret2'"
 
 # if FLUSH_DB is set db will be recreated
 #FLUSH_DB=true
+
+# don't lock SRC database when cloning
+SINGLE_TRANSACTION=true

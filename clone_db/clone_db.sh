@@ -54,6 +54,12 @@ pipe_clone() {
     ${DST_HOST}/${DST_DB}/${table:-*}..."
 
   local cmd="mysqldump -v -f ${src_login} ${SRC_DB} ${table}"
+
+  if [[ "${SINGLE_TRANSACTION}" == true ]]; then
+    log "using single transaction"
+    cmd="${cmd} --single-transaction"
+  fi
+
   if [[ ! -z "${FILTER// }" ]]; then
     log "using configured filter: ${FILTER}"
     cmd="${cmd} | ${FILTER}"
