@@ -1,0 +1,7 @@
+# the following database will be modified
+DB_HOST=uds-db-dev.moscow.eurochem.ru
+DB_NAME=bubo_staging
+DB_USER=flexible
+DB_PWD='p@ssw0rd'
+
+DB_TASK='TRUNCATE TABLE delete_me'
