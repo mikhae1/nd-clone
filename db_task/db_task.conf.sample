@@ -1,7 +1,8 @@
-# the following database will be modified
+# the following database will be used
 DB_HOST=uds-db-dev.moscow.eurochem.ru
 DB_NAME=bubo_staging
 DB_USER=flexible
 DB_PWD='p@ssw0rd'
 
+# run script via: mysql -e $DB_TASK
 DB_TASK='TRUNCATE TABLE delete_me'
